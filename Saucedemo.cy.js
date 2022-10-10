@@ -7,7 +7,7 @@ describe('Trying Input',() =>{
         cy.fixture('login').then(login =>{
             const nama = login.username
             const pass = login.password
-        })
+        
     it("Write the username", () => {
         cy.get('#user-name').clear()
         cy.get('#user-name').type(nama)
@@ -32,4 +32,5 @@ describe('Trying Input',() =>{
         cy.url().should('include','https://saucelabs.com/')
     })
     })
+})
 })
