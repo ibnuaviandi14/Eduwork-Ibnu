@@ -8,21 +8,12 @@ describe('Trying Input',() =>{
             const nama = login.username
             const pass = login.password
             cy.get('#user-name').type(nama)
-            cy.get('#user-name').type(pass)
+            cy.get('#password').type(pass)
+            cy.get('#login-button').click()
+            cy.get('#react-burger-menu-btn').click()
+            cy.url().should('include','/inventory.html')
+            cy.get('#about_sidebar_link').click()
+            cy.url().should('include','/saucelabs.com/')
     })
-
-    it("Click Login", () => {
-        cy.get('#login-button').click()
-    })
-
-    it("Click Menu", () => {
-        cy.get('#react-burger-menu-btn').click
-        cy.url().should('include','/inventory.html')
-    })
-
-    it("Click Abouts", () => {
-        cy.get('#react-burger-menu-btn').click
-        cy.url().should('include','https://saucelabs.com/')
-    })
-    })
+})
 })
