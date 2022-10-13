@@ -13,7 +13,7 @@ describe('Trying Input',() =>{
             cy.get('#react-burger-menu-btn').click()
             cy.url().should('include','/inventory.html')
             cy.get('#about_sidebar_link').click()
-            cy.url().should('include','/saucelabs.com/')
+            cy.get('h1').should('contain','DEVELOP WITH CONFIDENCE')
     })
 })
 })
