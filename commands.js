@@ -51,3 +51,15 @@ Cypress.Commands.add('Zerobank',(username,password) =>{
     cy.get('#user_email').type('Ibnuaviandi@yahoo.com')
     cy.contains('Send Password').click()
 })
+
+Cypress.Commands.add('loginViaAPI', (
+    Authorization = Cypress.env('userEmail','userPassword')
+  ) => {
+    cy.request('GET', `${Cypress.env('apiUrl')}/basic_auth`,
+    {Authorization}).then((response) => {
+      cy.setCookie('sessionId', response.body.sessionId)
+      cy.setCookie('userId', response.body.userId)
+      cy.setCookie('userName', response.body.userName)
+      cy.visit('/#!/main')
+    })
+ })
